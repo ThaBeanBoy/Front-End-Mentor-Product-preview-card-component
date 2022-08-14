@@ -49,6 +49,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        padding: var(--margin-and-padding);
       }
 
       .card {
@@ -58,11 +60,16 @@
         border-radius: 25vh;
         display: flex;
         align-items: center;
+        justify-content: center;
       }
 
-      img {
+      img.image-dsktp {
         height: 100%;
         border-radius: var(--card-borderadius) 0 0 var(--card-borderadius);
+      }
+
+      img.image-mbl {
+        display: none;
       }
 
       .product-details {
@@ -127,20 +134,54 @@
 
         transition: 0.25s;
       }
-
       .add-to-cart:hover {
-        /* filter: brightness(0.75); */
         background-color: var(--Dark2x-cyan);
       }
 
       .add-to-cart > img {
         margin-right: 8px;
       }
+
+      @media (max-width: 550px) {
+        .card {
+          flex-direction: column;
+          width: 100%;
+          height: auto;
+        }
+
+        img.image-dsktp {
+          display: none;
+        }
+
+        img.image-mbl {
+          display: block;
+          width: 100%;
+          border-radius: var(--card-borderadius) var(--card-borderadius) 0 0;
+        }
+
+        .product-details {
+          width: 100%;
+          border-radius: 0 0 var(--card-borderadius) var(--card-borderadius);
+        }
+
+        .product-details > * {
+          margin: calc(var(--margin-and-padding) / 4) 0;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="card">
-      <img src="./image-product-desktop.jpg" alt="image product desktop" />
+      <img
+        class="image-dsktp"
+        src="./image-product-desktop.jpg"
+        alt="image product desktop"
+      />
+      <img
+        class="image-mbl"
+        src="./image-product-mobile.jpg"
+        alt="image product mobile"
+      />
       <div class="product-details">
         <p class="product-category">perfume</p>
         <h1 class="product-name">Gabrielle essence eau de parfum</h1>
